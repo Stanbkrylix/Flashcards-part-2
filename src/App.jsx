@@ -36,14 +36,27 @@ function App() {
         }
     }
 
-    function resetFlipStatus(currentCard) {
+    function resetFlipStatus() {
         setCardData((prev) =>
             prev.map((card) => (!card.flip ? { ...card, flip: true } : card))
         );
     }
 
     return (
-        <>
+        <div>
+            <div
+                style={{
+                    textAlign: "center",
+                    color: "indigo",
+                    backgroundColor: "white",
+                    width: "500px",
+                }}
+            >
+                <h1 style={{ fontSize: "28px" }}>
+                    Guess if Fruit or Vegetable
+                </h1>
+                <p>Let's test your knowledge on Fruits and Vegetables</p>
+            </div>
             <div className="app-container">
                 <Card
                     cardData={cardData}
@@ -57,7 +70,7 @@ function App() {
                     currentCard={currentCard}
                 />
             </div>
-        </>
+        </div>
     );
 }
 

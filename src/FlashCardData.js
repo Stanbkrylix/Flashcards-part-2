@@ -1,7 +1,7 @@
 const flashcards = [
     {
         id: 0,
-        name: "Start",
+        name: "Start!",
         image: "https://example.com/images/tomato.jpg",
         type: "",
         difficulty: "",
