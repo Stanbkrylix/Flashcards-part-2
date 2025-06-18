@@ -56,6 +56,9 @@ function App() {
                     Guess if Fruit or Vegetable
                 </h1>
                 <p>Let's test your knowledge on Fruits and Vegetables</p>
+                <p style={{ padding: "0 0 0.4rem 0" }}>
+                    Number of cards: {cardData.length - 1}
+                </p>
             </div>
             <div className="app-container">
                 <Card
@@ -104,7 +107,7 @@ function Card({ cardData, currentCard, handleCardClick }) {
                         {cardData[currentCard].difficulty
                             ? `Q ${cardData[currentCard].id}: Is the
                         ${cardData[currentCard].name} a fruit or a vegetable?`
-                            : "Start"}
+                            : `${cardData[currentCard].name}`}
                     </p>
                 </div>
                 <div
@@ -148,10 +151,10 @@ function NavigationBtns({
                     onClickPrevBtn();
                 }}
             >
-                Previous
+                ⬅
             </button>
             <button className="next-btn" onClick={onClickNextBtn}>
-                Next
+                ➡
             </button>
         </div>
     );

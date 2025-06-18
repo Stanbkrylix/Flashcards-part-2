@@ -58,7 +58,11 @@ body {
     color: white;
     transform: rotateX(180deg);
 }
-
+.navigation-btn {
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+}
 .rotate {
     transform: rotateX(180deg);
 }
