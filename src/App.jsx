@@ -4,7 +4,6 @@ import flashcards from "./FlashCardData";
 import "./App.css";
 
 function App() {
-    const [count, setCount] = useState(0);
     const [cardData, setCardData] = useState(flashcards);
     const [currentCard, setCurrentCard] = useState(0);
 
@@ -66,7 +65,7 @@ function Card({ cardData, currentCard, handleCardClick }) {
     function pickCardColor() {
         if (cardData[currentCard].difficulty === "easy") return "green";
         if (cardData[currentCard].difficulty === "medium") return "orange";
-        if (cardData[currentCard].difficulty === "hard") return "pink";
+        if (cardData[currentCard].difficulty === "hard") return "#c43a73";
     }
 
     return (
@@ -106,7 +105,15 @@ function Card({ cardData, currentCard, handleCardClick }) {
                             : "black",
                     }}
                 >
-                    {cardData[currentCard].facts[0]}
+                    <h2 style={{ fontSize: "20px" }}>
+                        {cardData[currentCard].type &&
+                            `${cardData[currentCard].name} is a type of`}{" "}
+                        {cardData[currentCard].type &&
+                            `${cardData[currentCard].type}s`}
+                    </h2>
+                    {cardData[currentCard].facts.map((item, index) => (
+                        <p key={index}>{item}</p>
+                    ))}
                 </div>
             </div>
         </div>

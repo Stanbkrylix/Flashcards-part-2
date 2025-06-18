@@ -1,6 +1,6 @@
 const flashcards = [
     {
-        id: 1,
+        id: 0,
         name: "Start",
         image: "https://example.com/images/tomato.jpg",
         type: "",
@@ -9,7 +9,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 2,
+        id: 1,
         name: "Tomato",
         image: "https://example.com/images/tomato.jpg",
         type: "Fruit",
@@ -22,7 +22,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 3,
+        id: 2,
         name: "Carrot",
         image: "https://example.com/images/carrot.jpg",
         type: "Vegetable",
@@ -35,7 +35,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 4,
+        id: 3,
         name: "Cucumber",
         image: "https://example.com/images/cucumber.jpg",
         type: "Fruit",
@@ -48,7 +48,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 5,
+        id: 4,
         name: "Bell Pepper",
         image: "https://example.com/images/bellpepper.jpg",
         type: "Fruit",
@@ -61,7 +61,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 6,
+        id: 5,
         name: "Broccoli",
         image: "https://example.com/images/broccoli.jpg",
         type: "Vegetable",
@@ -74,7 +74,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 7,
+        id: 6,
         name: "Avocado",
         image: "https://example.com/images/avocado.jpg",
         type: "Fruit",
@@ -87,7 +87,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 8,
+        id: 7,
         name: "Potato",
         image: "https://example.com/images/potato.jpg",
         type: "Vegetable",
@@ -100,7 +100,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 9,
+        id: 8,
         name: "Pumpkin",
         image: "https://example.com/images/pumpkin.jpg",
         type: "Fruit",
@@ -113,7 +113,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 10,
+        id: 9,
         name: "Spinach",
         image: "https://example.com/images/spinach.jpg",
         type: "Vegetable",
@@ -126,7 +126,7 @@ const flashcards = [
         flip: true,
     },
     {
-        id: 11,
+        id: 10,
         name: "Zucchini",
         image: "https://example.com/images/zucchini.jpg",
         type: "Fruit",

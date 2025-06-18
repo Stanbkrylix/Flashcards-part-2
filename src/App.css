@@ -1,62 +1,65 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
 .app-container {
-  width: 500px;
-  height: 300px;
+    width: 500px;
+    height: 300px;
 }
 
 .flip-card {
-  background-color: transparent;
-  /* background-color: pink; */
-  width: 100%;
-  height: 100%;
-  perspective: 1000px; /* This gives the 3D effect */
-  cursor: pointer;
-  /* margin-bottom: 1rem; */
+    background-color: transparent;
+    /* background-color: pink; */
+    width: 100%;
+    height: 100%;
+    perspective: 1000px; /* This gives the 3D effect */
+    cursor: pointer;
+    /* margin-bottom: 1rem; */
 }
 
 .flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.2s;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.2s;
 }
 
 .flip-card-front,
 .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden; /* hides the back when not visible */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* hides the back when not visible */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    font-size: 20px;
 }
 
 .flip-card-front {
-  background-color: #bbb;
-  color: black;
-  display: flex;
-  flex-direction: column;
+    background-color: #bbb;
+    color: black;
 }
 .flip-card-front p {
 }
 
 .flip-card-back {
-  background-color: #2980b9;
-  color: white;
-  transform: rotateX(180deg);
+    background-color: #2980b9;
+    color: white;
+    transform: rotateX(180deg);
+}
+.flip-card-back p {
+    /* display: block; */
+    padding: 0;
 }
 
 .flip-card:hover .flip-card-inner {
 }
 .rotate {
-  transform: rotateX(180deg);
+    transform: rotateX(180deg);
 }
