@@ -57,7 +57,7 @@ The challenge I encountered during building this app was getting and working wit
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2025] [Stanley Delva jr]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
