@@ -53,7 +53,7 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+The challenge I encountered during building this app was getting and working with the flip card.
 
 ## License
 
