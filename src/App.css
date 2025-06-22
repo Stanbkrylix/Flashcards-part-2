@@ -10,13 +10,11 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    /* text-align: ; */
 }
 
 .app-container {
     width: 500px;
     height: 300px;
-    /* margin-bottom: 1rem; */
 }
 
 .mark-cards-div {
@@ -76,15 +74,12 @@ body {
     margin-bottom: 0.5rem;
 }
 .answer-form label {
-    /* background-color: rgb(34, 33, 33); */
     font-size: 1rem;
-    /* padding: 0.2; */
 }
 .answer-form input {
     padding: 0.3rem;
     font-size: 1rem;
     background-color: rgb(34, 33, 33);
-    /* border: none; */
     border-radius: 0.5rem;
 }
 .input-answer {
