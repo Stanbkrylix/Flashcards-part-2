@@ -16,6 +16,7 @@ body {
 .app-container {
     width: 500px;
     height: 300px;
+    /* margin-bottom: 1rem; */
 }
 
 .flip-card {
@@ -24,6 +25,7 @@ body {
     height: 100%;
     perspective: 1000px; /* This gives the 3D effect */
     cursor: pointer;
+    margin-bottom: 0.5rem;
 }
 
 .flip-card-inner {
@@ -65,4 +67,8 @@ body {
 }
 .rotate {
     transform: rotateX(180deg);
+}
+
+.correct-answer {
+    border: 1px solid blue;
 }

@@ -7,6 +7,36 @@ function App() {
     const [cardData, setCardData] = useState(flashcards);
     const [currentCard, setCurrentCard] = useState(0);
 
+    const [currentStreak, setCurrentStreak] = useState(0);
+    const [longestStreak, setLongestStreak] = useState("");
+    const [answerInput, setAnswerInput] = useState("");
+
+    function randomizeCards(array, fixedIndex) {
+        for (let i = array.length - 1; i > 1; i--) {
+            if (i === fixedIndex) continue;
+
+            let j;
+
+            do {
+                j = Math.floor(Math.random() * i) + 1;
+            } while (j === fixedIndex);
+
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function shuffleCards() {
+        const randomizeCardsArray = randomizeCards(
+            cardData.slice(),
+            currentCard
+        );
+        console.log(cardData);
+        console.log(randomizeCardsArray);
+        console.log(currentCard);
+        setCardData(randomizeCardsArray);
+    }
+
     function onClickNextBtn() {
         if (currentCard >= cardData.length - 1) return;
         setCurrentCard(currentCard + 1);
@@ -59,6 +89,10 @@ function App() {
                 <p style={{ padding: "0 0 0.4rem 0" }}>
                     Number of cards: {cardData.length - 1}
                 </p>
+                <p>
+                    Current Streak: {currentStreak}, longestStreak:
+                    {longestStreak}
+                </p>
             </div>
             <div className="app-container">
                 <Card
@@ -66,13 +100,41 @@ function App() {
                     currentCard={currentCard}
                     handleCardClick={handleCardClick}
                 />
+                <AnswerForm
+                    answerInput={answerInput}
+                    setAnswerInput={setAnswerInput}
+                />
                 <NavigationBtns
                     onClickPrevBtn={onClickPrevBtn}
                     onClickNextBtn={onClickNextBtn}
                     resetFlipStatus={resetFlipStatus}
                     currentCard={currentCard}
+                    shuffleCards={shuffleCards}
                 />
             </div>
+        </div>
+    );
+}
+
+function AnswerForm({ answerInput, setAnswerInput }) {
+    return (
+        <div className="answer-form">
+            <label htmlFor="answer">
+                Guess the answer here:{" "}
+                <input
+                    placeholder="Place your answer here"
+                    className="input-answer"
+                    type="text"
+                    value={answerInput}
+                    onChange={(e) => setAnswerInput(e.target.value)}
+                />
+                <input
+                    className="submit-answer"
+                    type="button"
+                    value="Submit Guess"
+                    // onSubmit={""}
+                />
+            </label>
         </div>
     );
 }
@@ -141,6 +203,7 @@ function NavigationBtns({
     onClickNextBtn,
     resetFlipStatus,
     currentCard,
+    shuffleCards,
 }) {
     return (
         <div className="navigation-btn">
@@ -155,6 +218,9 @@ function NavigationBtns({
             </button>
             <button className="next-btn" onClick={onClickNextBtn}>
                 ➡
+            </button>
+            <button className="shuffle-btn" onClick={shuffleCards}>
+                Shuffle Cards
             </button>
         </div>
     );
