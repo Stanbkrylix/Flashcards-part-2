@@ -12,6 +12,11 @@ function App() {
     const [answerInput, setAnswerInput] = useState("");
     const [isCorrect, setIsCorrect] = useState(null);
     const [markCard, setMarkCards] = useState(0);
+    const [isStartOrEnd, setIsStartOrEnd] = useState(false);
+
+    function grayOutBtn() {
+        console.log(currentCard);
+    }
 
     function markACard() {
         if (currentCard === 0) return;
@@ -55,6 +60,7 @@ function App() {
         setCurrentCard(currentCard + 1);
         setIsCorrect(null);
         setAnswerInput("");
+        grayOutBtn();
     }
 
     function onClickPrevBtn() {
@@ -63,6 +69,7 @@ function App() {
         setCurrentCard(currentCard - 1);
         setIsCorrect(null);
         setAnswerInput("");
+        grayOutBtn();
     }
 
     function handleCardClick(currentCard) {
@@ -180,6 +187,7 @@ function App() {
                     resetFlipStatus={resetFlipStatus}
                     currentCard={currentCard}
                     shuffleCards={shuffleCards}
+                    cardData={cardData}
                 />
             </div>
         </div>
@@ -283,11 +291,14 @@ function NavigationBtns({
     resetFlipStatus,
     currentCard,
     shuffleCards,
+    cardData,
 }) {
     return (
         <div className="navigation-btn">
             <button
-                className="previous-btn"
+                className={`previous-btn ${
+                    currentCard === 0 ? "gray-out" : ""
+                }`}
                 onClick={() => {
                     resetFlipStatus(currentCard);
                     onClickPrevBtn();
@@ -295,7 +306,13 @@ function NavigationBtns({
             >
                 ⬅
             </button>
-            <button className="next-btn" onClick={onClickNextBtn}>
+
+            <button
+                className={`next-btn ${
+                    currentCard === cardData.length - 1 ? "gray-out" : ""
+                }`}
+                onClick={onClickNextBtn}
+            >
                 ➡
             </button>
             <button className="shuffle-btn" onClick={shuffleCards}>

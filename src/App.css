@@ -72,6 +72,29 @@ body {
     justify-content: center;
     gap: 0.2rem;
 }
+.answer-form {
+    margin-bottom: 0.5rem;
+}
+.answer-form label {
+    /* background-color: rgb(34, 33, 33); */
+    font-size: 1rem;
+    /* padding: 0.2; */
+}
+.answer-form input {
+    padding: 0.3rem;
+    font-size: 1rem;
+    background-color: rgb(34, 33, 33);
+    /* border: none; */
+    border-radius: 0.5rem;
+}
+.input-answer {
+    margin: 0 0.3rem 0 0;
+}
+.submit-answer {
+    cursor: pointer;
+    border: black;
+}
+
 .rotate {
     transform: rotateX(180deg);
 }
@@ -81,4 +104,7 @@ body {
 }
 .incorrect-answer {
     border: 1px solid red;
+}
+.gray-out {
+    opacity: 0.7;
 }
