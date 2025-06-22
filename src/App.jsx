@@ -11,6 +11,17 @@ function App() {
     const [longestStreak, setLongestStreak] = useState(null);
     const [answerInput, setAnswerInput] = useState("");
     const [isCorrect, setIsCorrect] = useState(null);
+    const [markCard, setMarkCards] = useState(0);
+
+    function markACard() {
+        if (currentCard === 0) return;
+        if (cardData.length === 2) return;
+
+        const card = cardData[currentCard];
+
+        setCardData((prev) => prev.filter((item) => item.id !== card.id));
+        setMarkCards(markCard + 1);
+    }
 
     function randomizeCards(array, fixedIndex) {
         for (let i = array.length - 1; i > 1; i--) {
@@ -143,6 +154,14 @@ function App() {
                     {longestStreak}
                 </p>
             </div>
+
+            <div className="mark-cards-div">
+                <button className="mark-card-btn" onClick={markACard}>
+                    Mark Card
+                </button>
+                <p className="number-of-mark-cards">Mark cards: {markCard}</p>
+            </div>
+
             <div className="app-container">
                 <Card
                     cardData={cardData}

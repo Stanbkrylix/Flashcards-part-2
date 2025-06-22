@@ -19,6 +19,13 @@ body {
     /* margin-bottom: 1rem; */
 }
 
+.mark-cards-div {
+    background-color: #fff;
+    padding: 0.5rem 0 0 0;
+    margin-bottom: 1rem;
+    color: indigo;
+}
+
 .flip-card {
     background-color: transparent;
     width: 100%;
