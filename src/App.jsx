@@ -12,20 +12,28 @@ function App() {
     const [answerInput, setAnswerInput] = useState("");
     const [isCorrect, setIsCorrect] = useState(null);
     const [markCard, setMarkCards] = useState(0);
-    const [isStartOrEnd, setIsStartOrEnd] = useState(false);
+    // const [isStartOrEnd, setIsStartOrEnd] = useState(false);
 
     function grayOutBtn() {
         console.log(currentCard);
     }
 
     function markACard() {
-        if (currentCard === 0) return;
+        if (currentCard <= 0) return;
         if (cardData.length === 2) return;
 
         const card = cardData[currentCard];
+        const updatedData = cardData.filter((item) => item.id !== card.id);
 
-        setCardData((prev) => prev.filter((item) => item.id !== card.id));
+        setCardData(updatedData);
         setMarkCards(markCard + 1);
+        setIsCorrect(null);
+        setAnswerInput("");
+
+        if (currentCard >= updatedData.length) {
+            setCurrentCard(updatedData.length - 1);
+        }
+        console.log(currentCard);
     }
 
     function randomizeCards(array, fixedIndex) {
@@ -65,6 +73,7 @@ function App() {
 
     function onClickPrevBtn() {
         if (currentCard <= 0) return;
+        console.log(currentCard);
         console.log(currentCard);
         setCurrentCard(currentCard - 1);
         setIsCorrect(null);
