@@ -8,8 +8,9 @@ function App() {
     const [currentCard, setCurrentCard] = useState(0);
 
     const [currentStreak, setCurrentStreak] = useState(0);
-    const [longestStreak, setLongestStreak] = useState("");
+    const [longestStreak, setLongestStreak] = useState(null);
     const [answerInput, setAnswerInput] = useState("");
+    const [isCorrect, setIsCorrect] = useState(null);
 
     function randomizeCards(array, fixedIndex) {
         for (let i = array.length - 1; i > 1; i--) {
@@ -33,17 +34,24 @@ function App() {
         );
 
         setCardData(randomizeCardsArray);
+
+        setIsCorrect(null);
+        setAnswerInput("");
     }
 
     function onClickNextBtn() {
         if (currentCard >= cardData.length - 1) return;
         setCurrentCard(currentCard + 1);
+        setIsCorrect(null);
+        setAnswerInput("");
     }
 
     function onClickPrevBtn() {
         if (currentCard <= 0) return;
         console.log(currentCard);
         setCurrentCard(currentCard - 1);
+        setIsCorrect(null);
+        setAnswerInput("");
     }
 
     function handleCardClick(currentCard) {
@@ -72,8 +80,16 @@ function App() {
 
     function onSubmit() {
         if (currentCard === 0) return;
-        if (answerInput.length < 3) return;
+
+        // answer input needs to be greater than 3 for it to count
+        if (answerInput.length < 3) {
+            setIsCorrect(null);
+            return;
+        }
+
         const currentObject = cardData[currentCard];
+        if (!currentObject.flip) return;
+
         const arrayForIfValueExist = currentObject.facts
             .flatMap((item) => item.split(" "))
             .filter((item) => item.length > 3);
@@ -82,12 +98,27 @@ function App() {
             item.includes(answerInput)
         );
 
+        setIsCorrect(isValueExist);
+
+        if (isValueExist === true) {
+            setCurrentStreak(currentStreak + 1);
+        }
+
+        if (isValueExist === false) {
+            // console.log(currentStreak > longestStreak);
+            if (currentStreak > longestStreak) {
+                setLongestStreak(currentStreak);
+                setCurrentStreak(0);
+            }
+        }
         // console.log(
         //     arrayForIfValueExist[3].toLowerCase().includes(answerInput)
         // );
+        // console.log(isCorrect);
         console.log(isValueExist);
         console.log(currentObject);
-        console.log(answerInput);
+        console.log(currentObject.flip);
+        // console.log(answerInput);
     }
 
     return (
@@ -108,7 +139,7 @@ function App() {
                     Number of cards: {cardData.length - 1}
                 </p>
                 <p>
-                    Current Streak: {currentStreak}, longestStreak:
+                    Current Streak: {currentStreak}, longestStreak:{" "}
                     {longestStreak}
                 </p>
             </div>
@@ -122,6 +153,7 @@ function App() {
                     answerInput={answerInput}
                     setAnswerInput={setAnswerInput}
                     onSubmit={onSubmit}
+                    isCorrect={isCorrect}
                 />
                 <NavigationBtns
                     onClickPrevBtn={onClickPrevBtn}
@@ -135,14 +167,23 @@ function App() {
     );
 }
 
-function AnswerForm({ answerInput, setAnswerInput, onSubmit }) {
+function AnswerForm({ answerInput, setAnswerInput, onSubmit, isCorrect }) {
+    let correctClass = "";
+    if (isCorrect === true) {
+        correctClass = "correct-answer";
+    }
+
+    if (isCorrect === false) {
+        correctClass = "incorrect-answer";
+    }
+
     return (
         <div className="answer-form">
             <label htmlFor="answer">
                 Guess the answer here:{" "}
                 <input
                     placeholder="Place your answer here"
-                    className="input-answer"
+                    className={`input-answer ${correctClass}`}
                     type="text"
                     value={answerInput}
                     onChange={(e) => setAnswerInput(e.target.value)}
