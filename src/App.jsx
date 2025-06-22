@@ -31,9 +31,7 @@ function App() {
             cardData.slice(),
             currentCard
         );
-        console.log(cardData);
-        console.log(randomizeCardsArray);
-        console.log(currentCard);
+
         setCardData(randomizeCardsArray);
     }
 
@@ -72,6 +70,26 @@ function App() {
         );
     }
 
+    function onSubmit() {
+        if (currentCard === 0) return;
+        if (answerInput.length < 3) return;
+        const currentObject = cardData[currentCard];
+        const arrayForIfValueExist = currentObject.facts
+            .flatMap((item) => item.split(" "))
+            .filter((item) => item.length > 3);
+
+        const isValueExist = arrayForIfValueExist.some((item) =>
+            item.includes(answerInput)
+        );
+
+        // console.log(
+        //     arrayForIfValueExist[3].toLowerCase().includes(answerInput)
+        // );
+        console.log(isValueExist);
+        console.log(currentObject);
+        console.log(answerInput);
+    }
+
     return (
         <div>
             <div
@@ -103,6 +121,7 @@ function App() {
                 <AnswerForm
                     answerInput={answerInput}
                     setAnswerInput={setAnswerInput}
+                    onSubmit={onSubmit}
                 />
                 <NavigationBtns
                     onClickPrevBtn={onClickPrevBtn}
@@ -116,7 +135,7 @@ function App() {
     );
 }
 
-function AnswerForm({ answerInput, setAnswerInput }) {
+function AnswerForm({ answerInput, setAnswerInput, onSubmit }) {
     return (
         <div className="answer-form">
             <label htmlFor="answer">
@@ -132,7 +151,7 @@ function AnswerForm({ answerInput, setAnswerInput }) {
                     className="submit-answer"
                     type="button"
                     value="Submit Guess"
-                    // onSubmit={""}
+                    onClick={onSubmit}
                 />
             </label>
         </div>
