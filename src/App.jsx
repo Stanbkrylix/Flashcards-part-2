@@ -12,11 +12,6 @@ function App() {
     const [answerInput, setAnswerInput] = useState("");
     const [isCorrect, setIsCorrect] = useState(null);
     const [markCard, setMarkCards] = useState(0);
-    // const [isStartOrEnd, setIsStartOrEnd] = useState(false);
-
-    function grayOutBtn() {
-        console.log(currentCard);
-    }
 
     function markACard() {
         if (currentCard <= 0) return;
@@ -33,7 +28,6 @@ function App() {
         if (currentCard >= updatedData.length) {
             setCurrentCard(updatedData.length - 1);
         }
-        console.log(currentCard);
     }
 
     function randomizeCards(array, fixedIndex) {
@@ -65,6 +59,7 @@ function App() {
 
     function onClickNextBtn() {
         if (currentCard >= cardData.length - 1) return;
+
         setCurrentCard(currentCard + 1);
         setIsCorrect(null);
         setAnswerInput("");
@@ -73,8 +68,7 @@ function App() {
 
     function onClickPrevBtn() {
         if (currentCard <= 0) return;
-        console.log(currentCard);
-        console.log(currentCard);
+
         setCurrentCard(currentCard - 1);
         setIsCorrect(null);
         setAnswerInput("");
@@ -132,20 +126,11 @@ function App() {
         }
 
         if (isValueExist === false) {
-            // console.log(currentStreak > longestStreak);
             if (currentStreak > longestStreak) {
                 setLongestStreak(currentStreak);
                 setCurrentStreak(0);
             }
         }
-        // console.log(
-        //     arrayForIfValueExist[3].toLowerCase().includes(answerInput)
-        // );
-        // console.log(isCorrect);
-        console.log(isValueExist);
-        console.log(currentObject);
-        console.log(currentObject.flip);
-        // console.log(answerInput);
     }
 
     return (
